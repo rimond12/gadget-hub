@@ -1,9 +1,9 @@
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "../../api/auth/[...nextauth]/route";
-import AddProductForm from "./AddProductForm"; // client component
+import AddProductForm from "./AddProductForm"; 
 
 export default async function AddProductPage() {
-  const session = await getServerSession(authOptions); // server-side session
+  const session = await getServerSession(authOptions); 
 
   if (!session) {
     return (

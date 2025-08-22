@@ -15,14 +15,14 @@ export async function GET() {
 export async function POST(req) {
     try {
         const body = await req.json();
-        const product = { ...body, price: parseFloat(body.price) }; // price number
+        const product = { ...body, price: parseFloat(body.price) }; 
 
-        console.log("POST body:", product); // debug
+        console.log("POST body:", product); 
 
         const client = await clientPromise;
         const db = client.db(process.env.MONGODB_DB);
 
-        const result = await db.collection("products").insertOne(product); // <-- product
+        const result = await db.collection("products").insertOne(product); 
         console.log("Inserted:", result.insertedId);
 
         return Response.json({ message: "Product added", id: result.insertedId });

@@ -1,10 +1,10 @@
 // app/components/Navbar.jsx
 import Link from "next/link";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "../api/auth/[...nextauth]/route"; // path adjust করতে হবে
+import { authOptions } from "../api/auth/[...nextauth]/route"; 
 
 export default async function Navbar() {
-  const session = await getServerSession(authOptions); // server-side session
+  const session = await getServerSession(authOptions);
 
   return (
     <nav className="w-full border-b px-6 py-3 bg-white dark:bg-gray-900 shadow-sm">

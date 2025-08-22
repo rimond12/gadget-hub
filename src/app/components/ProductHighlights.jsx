@@ -1,6 +1,7 @@
+"use client";
 import Link from "next/link";
 
-// Example mock data for highlights
+
 const highlights = [
     {
         id: 1,

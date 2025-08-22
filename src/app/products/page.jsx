@@ -5,10 +5,10 @@ async function fetchProducts() {
   const client = await clientPromise;
   const db = client.db(process.env.MONGODB_DB);
 
-  // All products fetch
+ 
   const products = await db.collection("products").find({}).toArray();
 
-  // ObjectId → string for React key & URL
+  
   return products.map((p) => ({
     ...p,
     _id: p._id.toString(),
