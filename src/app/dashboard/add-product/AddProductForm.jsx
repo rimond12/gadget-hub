@@ -1,33 +1,97 @@
 "use client";
 
-import { useSession, signIn } from "next-auth/react";
-import AddProductForm from "./AddProductForm";
+import { useState } from "react";
 
-export default function AddProductPageWrapper() {
-    const { data: session, status } = useSession();
+export default function AddProductForm() {
+  const [form, setForm] = useState({
+    name: "",
+    description: "",
+    price: "",
+    image: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
-    if (status === "loading") {
-        return (
-            <div className="p-6 text-center">
-                <p>Loading...</p>
-            </div>
-        );
+  const handleChange = (e) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const res = await fetch("/api/products", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+      setMessage(data.message || "Product added!");
+      setForm({ name: "", description: "", price: "", image: "" });
+    } catch (err) {
+      setMessage("Error adding product");
+    } finally {
+      setLoading(false);
     }
+  };
 
-    if (!session) {
-        return (
-            <div className="p-6 max-w-md mx-auto text-center">
-                <h2 className="text-xl font-bold mb-4">Access Denied</h2>
-                <p className="mb-4">You must be logged in to add a product.</p>
-                <button
-                    onClick={() => signIn("google")}
-                    className="px-6 py-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-                >
-                    Sign in with Google
-                </button>
-            </div>
-        );
-    }
+  return (
+    <div className="max-w-2xl mx-auto px-6 py-12 min-h-[800px]">
+      <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+        Add New Product
+      </h1>
 
-    return <AddProductForm />;
+      {message && (
+        <p className="mb-4 text-green-600 dark:text-green-400">{message}</p>
+      )}
+
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <input
+          type="text"
+          name="name"
+          value={form.name}
+          onChange={handleChange}
+          placeholder="Product Name"
+          className="p-3 border rounded"
+          required
+        />
+        <textarea
+          name="description"
+          value={form.description}
+          onChange={handleChange}
+          placeholder="Product Description"
+          className="p-3 border rounded"
+          required
+        />
+        <input
+          type="number"
+          name="price"
+          value={form.price}
+          onChange={handleChange}
+          placeholder="Price"
+          className="p-3 border rounded"
+          required
+        />
+        <input
+          type="text"
+          name="image"
+          value={form.image}
+          onChange={handleChange}
+          placeholder="Image URL"
+          className="p-3 border rounded"
+        />
+
+        <button
+          type="submit"
+          disabled={loading}
+          className={`px-6 py-3 bg-blue-600 text-white rounded hover:bg-blue-700 transition ${
+            loading ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+        >
+          {loading ? "Adding..." : "Add Product"}
+        </button>
+      </form>
+    </div>
+  );
 }
