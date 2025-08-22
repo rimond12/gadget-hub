@@ -6,6 +6,7 @@ export default function Footer() {
         <p className="text-sm">&copy; {new Date().getFullYear()} GadgetHub. All rights reserved.</p>
 
         {/* Center */}
+        
         <div className="flex gap-4">
           <a href="#" className="hover:underline">About</a>
           <a href="#" className="hover:underline">Contact</a>
