@@ -7,19 +7,19 @@ const highlights = [
         id: 1,
         name: "MacBook Pro",
         price: "$2000",
-        image: "https://i.ibb.co.com/kgBTC3w1/Shouts-Elson-Reading.webp",
+        image: "https://i.ibb.co.com/bRdtcZhZ/csm-IMG-7593-a97c65292f.webp",
     },
     {
         id: 2,
         name: "iPhone 15",
         price: "$1200",
-        image: "https://i.ibb.co.com/LDwtZTT1/2148972401.jpg",
+        image: "https://i.ibb.co.com/Z6DGqWCL/iphone-15-pro-max-price-in-bangladesh-Mac-City-BD.webp",
     },
     {
         id: 3,
         name: "AirPods Pro",
         price: "$250",
-        image: "https://i.ibb.co.com/hRRDd0Rd/b253ae1cf28e02eac82f5bfccc7a303c.jpg",
+        image: "https://i.ibb.co.com/Bkf2NB2/airpods-pro-2-usb-c-blue-background.webp",
     },
 ];
 
