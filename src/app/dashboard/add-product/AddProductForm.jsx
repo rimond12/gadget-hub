@@ -46,6 +46,7 @@ export default function AddProductForm() {
         <p className="mb-4 text-green-600 dark:text-green-400">{message}</p>
       )}
 
+
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
           type="text"
