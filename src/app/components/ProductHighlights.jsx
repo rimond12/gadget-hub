@@ -1,55 +1,66 @@
 "use client";
 import Link from "next/link";
 
-
 const highlights = [
     {
         id: 1,
         name: "MacBook Pro",
         price: "$2000",
-        image: "https://i.ibb.co.com/bRdtcZhZ/csm-IMG-7593-a97c65292f.webp",
+        image: "https://i.ibb.co/bRdtcZhZ/csm-IMG-7593-a97c65292f.webp",
     },
     {
         id: 2,
         name: "iPhone 15",
         price: "$1200",
-        image: "https://i.ibb.co.com/Z6DGqWCL/iphone-15-pro-max-price-in-bangladesh-Mac-City-BD.webp",
+        image: "https://i.ibb.co/Z6DGqWCL/iphone-15-pro-max-price-in-bangladesh-Mac-City-BD.webp",
     },
     {
         id: 3,
         name: "AirPods Pro",
         price: "$250",
-        image: "https://i.ibb.co.com/Bkf2NB2/airpods-pro-2-usb-c-blue-background.webp",
+        image: "https://i.ibb.co/Bkf2NB2/airpods-pro-2-usb-c-blue-background.webp",
     },
 ];
 
 export default function ProductHighlights() {
     return (
-        <section className="py-20 bg-white dark:bg-gray-900 ">
+        <section className="py-20 ">
             <div className="max-w-7xl mx-auto px-6">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-10 text-center">
-                    Featured Gadgets
+                {/* Section Heading */}
+                <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-12 text-center">
+                    ✨ Featured Gadgets
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+
+                {/* Product Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
                     {highlights.map((product) => (
                         <div
                             key={product.id}
-                            className="border rounded-lg p-4 flex flex-col items-center bg-gray-50 dark:bg-gray-800"
+                            className="group relative bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 p-6 flex flex-col items-center text-center"
                         >
-                            <img
-                                src={product.image}
-                                alt={product.name}
-                                className="w-40 h-40 object-contain mb-4"
-                            />
-                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                            {/* Image */}
+                            <div className="w-56 h-56 mb-6 overflow-hidden flex items-center justify-center">
+                                <img
+                                    src={product.image}
+                                    alt={product.name}
+                                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                                />
+                            </div>
+
+                            {/* Product Info */}
+                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                                 {product.name}
                             </h3>
-                            <p className="text-gray-700 dark:text-gray-300 mb-4">{product.price}</p>
+                            <p className="text-lg font-medium text-blue-600 dark:text-blue-400 mb-6">
+                                {product.price}
+                            </p>
+
+                            {/* Details Button */}
                             <Link
                                 href={`/products/${product.id}`}
-                                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+                                className="px-6 py-2.5 bg-blue-600 text-white font-medium rounded-xl shadow hover:bg-blue-700 hover:shadow-lg transition"
                             >
-                                Details
+                                View Details
                             </Link>
                         </div>
                     ))}
