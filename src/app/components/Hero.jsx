@@ -36,7 +36,7 @@ export default function Hero() {
             🚀 View Products
           </Link>
           <Link
-            href="/about"
+            href="#"
             className="px-8 py-3 rounded-2xl border border-gray-300/50 text-white font-medium hover:bg-white/10 transition"
           >
             Learn More

@@ -57,6 +57,9 @@ export default async function ProductDetailsPage({ params }) {
             <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
               {product.description}
             </p>
+            <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+              {product.details}
+            </p>
             <p className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-6">
               ${product.price}
             </p>

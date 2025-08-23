@@ -1,4 +1,4 @@
-// app/components/Navbar.jsx
+
 import Link from "next/link";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "../api/auth/[...nextauth]/route";
@@ -19,6 +19,12 @@ export default async function Navbar() {
 
         {/* Links */}
         <div className="flex items-center gap-6">
+          <Link
+            href="/"
+            className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition"
+          >
+            Home
+          </Link>
           <Link
             href="/products"
             className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition"

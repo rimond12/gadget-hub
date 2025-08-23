@@ -55,15 +55,16 @@ export default function ProductHighlights() {
                                 {product.price}
                             </p>
 
-                            {/* Details Button */}
-                            <Link
-                                href={`/products/${product.id}`}
-                                className="px-6 py-2.5 bg-blue-600 text-white font-medium rounded-xl shadow hover:bg-blue-700 hover:shadow-lg transition"
-                            >
-                                View Details
-                            </Link>
                         </div>
                     ))}
+                </div>
+                <div className="mt-8 flex justify-center items-center">
+                    <Link
+                        href="/products"
+                        className="px-6 py-2.5 bg-blue-600 text-white font-medium rounded-xl shadow hover:bg-blue-700 hover:shadow-lg transition"
+                    >
+                        View All Products
+                    </Link>
                 </div>
             </div>
         </section>
